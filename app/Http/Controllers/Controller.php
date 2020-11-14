@@ -23,5 +23,15 @@ class Controller extends BaseController
             'quote' => $randomQuote, 
             'server_ip'=> gethostbyname(gethostname())]);
     }
+
+    public function images()
+    {   
+        $randomNumber = rand(1,15);
+        $data = [
+            "image_url" => "https://rand-images.s3.amazonaws.com/{$randomNumber}.png",
+            'server_ip' => gethostbyname(gethostname()),
+        ];
+        return view("images.images")->with("data", $data);
+    }
     
 }
